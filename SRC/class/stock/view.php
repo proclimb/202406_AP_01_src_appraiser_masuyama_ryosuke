@@ -97,7 +97,7 @@ function subStockView($param)
 						for ($i = 0; $i < 6; $i++) {
 						?>
 							<input type="checkbox" name="sHow[]" value="<?php print $i + 1; ?>" <?php for ($j = 0; $j < 6; $j++) {
-																									if ($param["sHow"][$j] == $i + 1) print ' checked="checked"';
+																									if ($param["sHow"][$j] == $i) print ' checked="checked"';
 																								} ?> /> <?php print fnHowName($i); ?>
 						<?php
 							if ($i == 2) {
@@ -330,7 +330,7 @@ function subStockEditView($param)
 					for ($i = 0; $i < 6; $i++) {
 					?>
 						<br />
-						<input type="radio" name="how" value="<?php print $i + 1; ?>" <?php if ($param["how"] == $i + 1) print ' checked="checked"'; ?> /> <?php print fnHowName($i); ?>
+						<input type="radio" name="how" value="<?php print $i + 1; ?>" <?php if ($param["how"] == $i) print ' checked="checked"'; ?> /> <?php print fnHowName($i); ?>
 					<?php
 					}
 					?>
