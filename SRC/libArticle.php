@@ -24,7 +24,7 @@ function subArticle()
 	}
 
 	if (!$sPage) {
-		$sPage = l;
+		$sPage = 1;
 	}
 
 	if (!$orderBy) {
@@ -78,7 +78,6 @@ function subArticle()
 		</div>
 
 		<input type="image" src="./images/btn_search.png" onclick="form.act.value='articleSearch';form.sPage.value=1;form.submit();" />
-
 		<hr />
 	</form>
 	<?php
@@ -86,14 +85,13 @@ function subArticle()
 		return;
 	}
 	$sql = fnSqlArticleList(0, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleNote, $sKeyBox, $sDrawing, $sSellCharge, $sPage, $orderBy, $orderTo);
-	$res = mysql_query($sql);
-	$row = mysql_fetch_array($res);
+	$res = mysqli_query($conn, $sql);
+	$row = mysqli_fetch_array($res);
 
 	$count = $row[0];
 
 	$sPage = fnPage($count, $sPage, 'articleSearch');
 	?>
-
 	<div class="list">
 		<table border="0" cellpadding="5" cellspacing="1">
 			<tr>
@@ -108,7 +106,6 @@ function subArticle()
 			</tr>
 			<?php
 			$sql = fnSqlArticleList(1, $sDel, $sArticle, $sRoom, $sKeyPlace, $sArticleNote, $sKeyBox, $sDrawing, $sSellCharge, $sPage, $orderBy, $orderTo);
-
 			$res = mysqli_query($conn, $sql);
 			$i = 0;
 			while ($row = mysqli_fetch_array($res)) {
